@@ -1,6 +1,7 @@
 - 👋 Hi, I’m @AKCreators
 - 👀 I’m interested in web development and design 
-- 🌱 I’m currently learning java script
+- 🌱 I work in the PHP and laravel
+- 🌱I also work in hte javaScript
 - 💞️ I’m looking to collaborate on the creation of web development
 - 📫 How to reach me : you can contact me on my whatsapp number and also on my facebook page : Information Technology , my number is 03267280074.
 - 😄 Pronouns: ...
