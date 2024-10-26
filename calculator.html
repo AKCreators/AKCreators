@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculator</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <div class="calculator">
@@ -14,6 +17,7 @@
             </div>
             <div class="display-screen">
                 <div id="display"></div>
+                <div id="result"></div>
             </div>
             <div class="button">
                 <table>
@@ -21,7 +25,8 @@
                         <td><button class="operators" id="clear">C</button></td>
                         <td><button class="operators" id="/">/</button></td>
                         <td><button class="operators" id="*">*</button></td>
-                        <td><button class="operators" id="backspace"><</button></td>
+                        <td><button class="operators" aria-label="Backspace" id="backspace"><i
+                                    class="fas fa-backspace"></i></button></td>
                     </tr>
                     <tr>
                         <td><button class="number" id="7">7</button></td>
@@ -50,7 +55,7 @@
                         <td><button class="operators" id="sin">sin</button></td>
                         <td><button class="operators" id="cos">cos</button></td>
                         <td><button class="operators" id="tan">tan</button></td>
-                        <td><button class="operators" id="pi">pi</button></td>
+                        <td><button class="operators" id="pi">π</button></td>
                     </tr>
                 </table>
             </div>
@@ -58,4 +63,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
