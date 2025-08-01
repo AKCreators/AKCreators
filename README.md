@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @AKCreators
+- 👋 Hi, I’m @abdulkhaliq
 - 👀 I’m interested in web development and design 
 - 🌱 I work in the PHP and laravel
 - 🌱I also work in the javaScript
