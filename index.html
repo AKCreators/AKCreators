@@ -1,66 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Modern Calculator</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container">
-        <div class="calculator">
-            <div class="theme-toggler active">
-                <i class="toggler-icon"></i>
+<body
+    class="bg-gradient-to-br from-gray-100 to-gray-300 dark:from-gray-800 dark:to-gray-900 min-h-screen flex items-center justify-center p-4 font-sans transition-colors duration-300"
+    style="font-family: 'Inter', sans-serif;">
+    <div class="container mx-auto max-w-lg">
+        <div
+            class="calculator bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300">
+            <!-- Header with theme toggle -->
+            <div class="flex justify-between items-center p-6 pb-4 border-b border-gray-100 dark:border-gray-700">
+                <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                    <i class="fas fa-calculator mr-2 text-blue-500"></i>Calculator
+                </h1>
+                <div class="flex items-center space-x-4">
+                    <div class="text-sm text-gray-500 dark:text-gray-400">
+                        <i class="fas fa-sun text-yellow-500 mr-1"></i> /
+                        <i class="fas fa-moon text-indigo-500 ml-1"></i>
+                    </div>
+                    <button id="theme-toggle"
+                        class="w-14 h-7 flex items-center bg-gray-300 dark:bg-gray-700 rounded-full p-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div id="theme-toggle-circle"
+                            class="bg-white dark:bg-gray-900 w-5 h-5 rounded-full shadow-md transform transition-transform duration-300 translate-x-0 dark:translate-x-7">
+                        </div>
+                    </button>
+                </div>
             </div>
-            <div class="display-screen">
-                <div id="display"></div>
-                <div id="result"></div>
+
+            <!-- Display Screen -->
+            <div
+                class="display-screen bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-6">
+                <div id="expression"
+                    class="text-right text-gray-500 dark:text-gray-400 text-lg mb-2 min-h-[1.5rem] overflow-x-auto whitespace-nowrap">
+                    Enter your expression</div>
+                <div id="display"
+                    class="text-right text-gray-800 dark:text-gray-100 text-4xl font-semibold mb-1 min-h-[3rem] overflow-x-auto whitespace-nowrap">
+                    0</div>
+                <div id="result" class="text-right text-blue-600 dark:text-blue-400 text-xl min-h-[1.75rem]"></div>
             </div>
-            <div class="button">
-                <table>
-                    <tr>
-                        <td><button class="operators" id="clear">C</button></td>
-                        <td><button class="operators" id="/">/</button></td>
-                        <td><button class="operators" id="*">*</button></td>
-                        <td><button class="operators" aria-label="Backspace" id="backspace"><i
-                                    class="fas fa-backspace"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td><button class="number" id="7">7</button></td>
-                        <td><button class="number" id="8">8</button></td>
-                        <td><button class="number" id="9">9</button></td>
-                        <td><button class="operators" id="-">-</button></td>
-                    </tr>
-                    <tr>
-                        <td><button class="number" id="4">4</button></td>
-                        <td><button class="number" id="5">5</button></td>
-                        <td><button class="number" id="6">6</button></td>
-                        <td><button class="operators" id="+">+</button></td>
-                    </tr>
-                    <tr>
-                        <td><button class="number" id="1">1</button></td>
-                        <td><button class="number" id="2">2</button></td>
-                        <td><button class="number" id="3">3</button></td>
-                        <td rowspan="2"><button class="equal" id="equal">=</button></td>
-                    </tr>
-                    <tr>
-                        <td><button class="operators" id="(">(</button></td>
-                        <td><button class="number" id="0">0</button></td>
-                        <td><button class="operators" id=")">)</button></td>
-                    </tr>
-                    <tr>
-                        <td><button class="operators" id="sin">sin</button></td>
-                        <td><button class="operators" id="cos">cos</button></td>
-                        <td><button class="operators" id="tan">tan</button></td>
-                        <td><button class="operators" id="pi">π</button></td>
-                    </tr>
-                </table>
+
+            <!-- Calculator Buttons -->
+            <div class="buttons p-6 pt-4">
+                <div class="grid grid-cols-4 gap-3 sm:gap-4">
+                    <!-- Row 1 -->
+                    <button
+                        class="operator-btn bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 text-red-700 dark:text-red-300 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-action="clear">
+                        C
+                    </button>
+                    <button
+                        class="operator-btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-action="backspace">
+                        <i class="fas fa-backspace"></i>
+                    </button>
+                    <button
+                        class="operator-btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value="(">
+                        (
+                    </button>
+                    <button
+                        class="operator-btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value=")">
+                        )
+                    </button>
+
+                    <!-- Row 2 -->
+                    <button
+                        class="function-btn bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-medium rounded-xl h-14 flex items-center justify-center text-sm sm:text-base transition-all active:scale-95"
+                        data-action="sin">
+                        sin
+                    </button>
+                    <button
+                        class="function-btn bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-medium rounded-xl h-14 flex items-center justify-center text-sm sm:text-base transition-all active:scale-95"
+                        data-action="cos">
+                        cos
+                    </button>
+                    <button
+                        class="function-btn bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-medium rounded-xl h-14 flex items-center justify-center text-sm sm:text-base transition-all active:scale-95"
+                        data-action="tan">
+                        tan
+                    </button>
+                    <button
+                        class="operator-btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-action="pi">
+                        π
+                    </button>
+
+                    <!-- Row 3 -->
+                    <button
+                        class="number-btn bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value="7">
+                        7
+                    </button>
+                    <button
+                        class="number-btn bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value="8">
+                        8
+                    </button>
+                    <button
+                        class="number-btn bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value="9">
+                        9
+                    </button>
+                    <button
+                        class="operator-btn bg-amber-100 dark:bg-amber-900/30 hover:bg-amber-200 dark:hover:bg-amber-900/50 text-amber-700 dark:text-amber-300 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-action="/">
+                        ÷
+                    </button>
+
+                    <!-- Row 4 -->
+                    <button
+                        class="number-btn bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value="4">
+                        4
+                    </button>
+                    <button
+                        class="number-btn bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value="5">
+                        5
+                    </button>
+                    <button
+                        class="number-btn bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value="6">
+                        6
+                    </button>
+                    <button
+                        class="operator-btn bg-amber-100 dark:bg-amber-900/30 hover:bg-amber-200 dark:hover:bg-amber-900/50 text-amber-700 dark:text-amber-300 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-action="*">
+                        ×
+                    </button>
+
+                    <!-- Row 5 -->
+                    <button
+                        class="number-btn bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value="1">
+                        1
+                    </button>
+                    <button
+                        class="number-btn bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value="2">
+                        2
+                    </button>
+                    <button
+                        class="number-btn bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value="3">
+                        3
+                    </button>
+                    <button
+                        class="operator-btn bg-amber-100 dark:bg-amber-900/30 hover:bg-amber-200 dark:hover:bg-amber-900/50 text-amber-700 dark:text-amber-300 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-action="-">
+                        -
+                    </button>
+
+                    <!-- Row 6 -->
+                    <button
+                        class="number-btn bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value="0">
+                        0
+                    </button>
+                    <button
+                        class="number-btn bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-value=".">
+                        .
+                    </button>
+                    <button
+                        class="equal-btn bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold rounded-xl h-14 flex items-center justify-center text-xl transition-all active:scale-95"
+                        data-action="equal">
+                        =
+                    </button>
+                    <button
+                        class="operator-btn bg-amber-100 dark:bg-amber-900/30 hover:bg-amber-200 dark:hover:bg-amber-900/50 text-amber-700 dark:text-amber-300 font-medium rounded-xl h-14 flex items-center justify-center text-lg transition-all active:scale-95"
+                        data-action="+">
+                        +
+                    </button>
+                </div>
+
+                <!-- Footer -->
+                <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 text-center">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        Supports basic operations, parentheses, and trigonometric functions
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 
